@@ -110,6 +110,54 @@ button, input, select, textarea {
   .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
 }
 
+/* Responsive Utility Classes */
+.mobile-only {
+  display: none !important;
+}
+.desktop-only {
+  display: block;
+}
+span.desktop-only, a.desktop-only {
+  display: inline-flex;
+}
+
+.shop-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+  .mobile-only {
+    display: block !important;
+  }
+  button.mobile-only, a.mobile-only, div.mobile-only {
+    display: inline-flex !important;
+  }
+  .shop-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .carousel-wrapper {
+    height: 220px !important;
+    border-radius: 8px;
+  }
+  .gallery-main {
+    height: 280px !important;
+    padding: 1rem;
+  }
+  .gallery-thumb {
+    width: 60px !important;
+    height: 60px !important;
+  }
+}
+
 /* Buttons */
 .btn {
   display: inline-flex;

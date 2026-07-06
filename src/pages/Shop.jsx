@@ -67,7 +67,7 @@ export const Shop = () => {
         Shop Branded Mobiles
       </h2>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '280px 1fr', gap: '2rem' }}>
+      <div className="shop-grid">
         {/* Sidebar Brand Filters */}
         <div className="desktop-only">
           <Sidebar
