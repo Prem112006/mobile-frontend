@@ -78,7 +78,7 @@ export const Login = () => {
             btnEl.innerHTML = '';
             window.google.accounts.id.renderButton(
               btnEl,
-              { theme: "outline", size: "large", width: "400" }
+              { theme: "outline", size: "large", width: "400", text: "continue_with" }
             );
           }
         } catch (err) {
@@ -228,8 +228,47 @@ export const Login = () => {
             </div>
 
             {googleClientId ? (
-              <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
-                <div id="google-signin-button-login" style={{ width: '100%', display: 'flex', justifyContent: 'center' }}></div>
+              <div style={{ position: 'relative', width: '100%', display: 'flex', justifyContent: 'center' }}>
+                {/* Visual custom button that the user sees */}
+                <button
+                  type="button"
+                  style={{
+                    width: '100%',
+                    padding: '0.8rem',
+                    backgroundColor: '#ffffff',
+                    color: '#1f2937',
+                    border: '1px solid #e5e7eb',
+                    borderRadius: '8px',
+                    fontWeight: 600,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '0.75rem',
+                    fontSize: '0.95rem',
+                    pointerEvents: 'none', // Clicks pass through to the underlying Google iframe
+                    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)'
+                  }}
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#EA4335" d="M12 5.04c1.66 0 3.2.57 4.38 1.69l3.27-3.27C17.67 1.54 14.98 1 12 1 7.35 1 3.37 3.65 1.39 7.56l3.85 2.99c.9-2.7 3.4-4.51 6.76-4.51z"/><path fill="#4285F4" d="M23.49 12.27c0-.81-.07-1.59-.2-2.34H12v4.51h6.44c-.28 1.48-1.12 2.73-2.38 3.58l3.7 2.87c2.16-2 3.73-4.94 3.73-8.62z"/><path fill="#FBBC05" d="M5.24 14.81c-.23-.69-.36-1.43-.36-2.2s.13-1.51.36-2.2L1.39 7.42C.5 9.2 0 11.19 0 13.27s.5 4.07 1.39 5.85l3.85-3.31z"/><path fill="#34A853" d="M12 23c3.24 0 5.97-1.07 7.96-2.91l-3.7-2.87c-1.03.69-2.35 1.1-4.26 1.1-3.36 0-5.86-1.81-6.76-4.51L1.39 17.1C3.37 21.01 7.35 23 12 23z"/></svg>
+                  Continue with Google
+                </button>
+                {/* Transparent wrapper container where the Google Sign-in iframe gets rendered */}
+                <div 
+                  id="google-signin-button-login" 
+                  style={{ 
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    opacity: 0.01,
+                    overflow: 'hidden',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    cursor: 'pointer'
+                  }}
+                ></div>
               </div>
             ) : (
               <button
